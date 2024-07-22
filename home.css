@@ -1,0 +1,189 @@
+html, body {
+    height: 100%; /* Ensure the body covers the full viewport height */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent scrollbars if the animation causes overflow */
+}
+
+/* Background image settings */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./wallpaper.png'); /* Replace with your background image path */
+    background-size: cover; /* Scale the image to cover the whole viewport */
+    background-position: 0 0; /* Initial position */
+    background-repeat: repeat; /* Repeat the image */
+    animation: scrollBackground 30s linear infinite; /* Apply scrolling animation */
+    z-index: -1; /* Make sure it stays behind other content */
+}
+
+main {
+    flex: 1; /* Allows main content to grow and push footer to the bottom */
+    position: relative; /* Allows positioning of child elements */
+}
+
+/* Scrolling background animation */
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+audio {
+    display: none; /* Hide audio controls */
+}
+
+/* Rounded border for the favicon image */
+.favicon-rounded {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%;
+    border: 1px solid #333; /* Adjust border color and width as needed */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Shake effect on hover */
+.favicon-rounded:hover {
+    animation: shake 0.5s; /* Apply shake animation */
+    animation-iteration-count: infinite; /* Repeat the animation */
+}
+
+/* Keyframes for shake animation */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Glassy play button */
+.play-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure it takes full height of the main section */
+    position: static; /* Allows positioning of button */
+}
+
+.play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Size of the button */
+    height: 100px; /* Size of the button */
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    border-radius: 50%; /* Circular button */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    backdrop-filter: blur(8px); /* Blur effect for glass look */
+    text-decoration: none; /* Remove underline from link */
+    color: #fff; /* White color for text */
+    font-size: 2rem; /* Size of the play icon */
+    font-weight: bold;
+    transition: background 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    margin-top: 18vh;
+}
+
+.play-button:hover {
+    background: rgba(255, 255, 255, 0.4); /* Slightly more opaque on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.play-icon {
+    margin: 0; /* Center the icon */
+}
+
+/* Water reflection animation for header and footer */
+@keyframes waterReflection {
+    0% {
+        background: linear-gradient(to bottom, rgba(255, 165, 0, 0.5), rgba(25, 25, 112, 0.5));
+        background-position: 0% 0%;
+    }
+    50% {
+        background: linear-gradient(to bottom, rgba(255, 99, 71, 0.5), rgba(25, 25, 112, 0.5));
+        background-position: 100% 100%;
+    }
+    100% {
+        background: linear-gradient(to bottom, rgba(255, 165, 0, 0.5), rgba(25, 25, 112, 0.5));
+        background-position: 0% 0%;
+    }
+}
+
+header {
+    text-align: center;
+    padding: 0.4rem;
+    background: linear-gradient(to bottom, rgba(255, 165, 0, 0.5), rgba(25, 25, 112, 0.5)); /* Initial gradient */
+    background-size: 100% 100%; /* Set background size for animation */
+    backdrop-filter: blur(10px); /* Apply a blur effect for the glass-like look */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for added depth */
+    animation: waterReflection 15s ease-in-out infinite; /* Apply the water reflection animation */
+    position: relative; /* Ensures the header stays in the flow of content */
+    z-index: 1; /* Ensures the header appears above the background */
+}
+
+header h1 {
+    margin-bottom: 1rem;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 0.2rem;
+    font-size: 1rem; /* Adjust font size for the footer on smaller screens */
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Thinner border for mobile */
+    background: linear-gradient(to bottom, rgba(255, 165, 0, 0.5), rgba(25, 25, 112, 0.5)); /* Same gradient as header */
+    background-size: 200% 200%; /* Set background size for animation */
+    backdrop-filter: blur(10px); /* Apply a blur effect for the glass-like look */
+    animation: waterReflection 15s ease-in-out infinite; /* Apply the same water reflection animation as header */
+    position: relative; /* Ensures the footer stays in the flow of content */
+    z-index: 1; /* Ensures the footer appears above the background */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Adjust height to fit content on mobile screens */
+    }
+
+    header {
+        padding: 0.4rem; /* Adjust padding for smaller screens */
+        font-size: 1.2rem; /* Adjust font size for the header on smaller screens */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Thinner border for mobile */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+    }
+
+    .favicon-rounded {
+        width: 80px; /* Adjust size for mobile */
+        height: 80px; /* Adjust size for mobile */
+    }
+
+    footer {
+        padding: 0.2rem; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for the footer on smaller screens */
+        border-top: 1px solid rgba(255, 255, 255, 0.3); /* Thinner border for mobile */
+        margin-top: 40vh; /* Set margin-top to 70% of the viewport height */
+    }
+}

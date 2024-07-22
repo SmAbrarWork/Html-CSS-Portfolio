@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Anime</title>
+    <link rel="stylesheet" href="./home.css">
+    <link rel="icon" href="./favicon.png">
+    <style>
+        /* Hide the audio player */
+        #backgroundAudio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Welcome To Clannad Gallery</h2>
+        <br />
+        <!-- Clickable image that will trigger audio playback -->
+        <a href="#" id="aquaLink" title="Have a drink with me, Click to play" onclick="document.getElementById('backgroundAudio').play(); return false;">
+            <img src="./aqua.jpeg" alt="Favicon" class="favicon-rounded" id="aquaImage" />
+        </a>
+    </header>
+    <main>
+        <div class="play-button-container">
+            <a href="https://youtu.be/wGrYgAjrz_I" target="_blank" class="play-button">
+                <span class="play-icon">&#9658;</span> <!-- Unicode play triangle icon -->
+            </a>
+        </div>
+    </main>
+    <!-- Hidden audio player -->
+    <audio id="backgroundAudio" loop>
+        <source src="./roaring.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <footer>
+        <p>&copy; 2024 Clannad Gallery Made By S.M Abrar</p>
+        <p>Follow us on:
+            <a href="https://www.linkedin.com/in/syed-muhammad-abrar-hasan/" target="_blank">Linkedin.com</a>
+        </p>
+    </footer>
+</body>
+</html>
